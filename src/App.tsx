@@ -34,7 +34,7 @@ export default function App(){
   ]
   
   const dialogueC=[
-    { text:'Wow, che colpo di fortuna!', gif:'/images/spr_tenna_tie_adjust_small_0.png' },
+    { text:'Wow, che colpo di fortuna!', gif:'/images/spr_tenna_dance_cabbage.gif' },
     { text:'Osserva che meraviglia!', gif:'/images/spr_tenna_t_pose.gif' },
     { text:'La cura per i dettagli!', gif:'/images/spr_tenna_grasp_anim.gif' },
     { text:'Veramente degno del Tumblr Sexyman 2025.', gif:'/images/spr_tenna_dance_cane.gif' },
@@ -56,7 +56,7 @@ export default function App(){
     await beep(880,120); setPhase(PHASE.FLASH)
     setTimeout(()=>setPhase(PHASE.BLACK),300)
     setTimeout(async()=>{ await beep(120,180,'square'); setPhase(PHASE.TV) },900)
-    setTimeout(()=>setPhase(PHASE.DIALOGUE),2200)
+    setTimeout(()=>setPhase(PHASE.DIALOGUE),5200)
   }
 
   const nextDialogue=()=>{
@@ -115,7 +115,7 @@ export default function App(){
         </motion.div>
       )}</AnimatePresence>
 
-      {/* REVEAL SEQUENCE (one box at a time, dialogues with avatar) */}
+      {/* REVEAL SEQUENCE */}
       <AnimatePresence>{phase===PHASE.REVEAL && (
         <motion.div key="r" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="absolute inset-0">
           <RevealSequence onDone={()=>{ setDialogIndex(0); setPhase(PHASE.PRODUCT) }}/>

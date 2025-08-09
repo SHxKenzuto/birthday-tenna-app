@@ -5,9 +5,9 @@ import { useTypewriter } from '@hooks/useTypewriter'
 
 export const Intro:React.FC<{active:boolean, onTap:()=>void}>=({active,onTap})=>{
   const INTRO = [
-    '…SIAMO COLLEGATI…',
+    'SIAMO COLLEGATI?',
     'ECCELLENTE',
-    'VERAMENTE\nECCELLENTE...',
+    'VERAMENTE\nECCELLENTE',
     'QUESTO ESPERIMENTO\nSEMBRA...',
     'MOLTO',
     'MOLTO',
