@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Screen } from '@components/Screen'
 import { Intro } from '@scenes/Intro'
@@ -16,15 +16,17 @@ export default function App() {
   const [phase, setPhase] = useState<Phase>(PHASE.INTRO)
   const [dialogIndex, setDialogIndex] = useState(0)
 
-  const audio = useAudioManager({
-    tvtime: { src: '/audio/itstvtime.mp3', volume: 0.25 },
+  const tracks = useMemo(() => ({
+    tvtime: { src: '/audio/itstvtime.wav', volume: 0.25, loop: true },
     anotherhim: { src: '/audio/another-him.mp3', volume: 0.25 },
     flash: { src: '/audio/mus_create.wav', volume: 0.25 },
     showtime: { src: '/audio/showtime.m4a', volume: 0.25, loop: true },
     drumroll: { src: '/audio/drumroll.wav', volume: 0.25, loop: true },
     piatti: { src: '/audio/piatti.wav', volume: 0.25 },
-
-  })
+    halloffame: { src: '/audio/halloffame.mp3', volume: 0.25 , loop: true},
+    scratch: { src: '/audio/scratch.wav', volume: 0.25},
+}), []); 
+  const audio = useAudioManager(tracks);
 
   const firstGestureDone = React.useRef(false);
   const onFirstUserGesture = async () => {
@@ -71,29 +73,57 @@ export default function App() {
 
   const startShow = async () => {
     audio.stop('anotherhim');
-    setTimeout(() => setPhase(PHASE.FLASH), 100)
-    setTimeout(() => setPhase(PHASE.BLACK), 300)
+    setTimeout(() => setPhase(PHASE.FLASH), 200)
+    setTimeout(() => setPhase(PHASE.BLACK), 800)
     setTimeout(() => setPhase(PHASE.TV), 900)
     setTimeout(() => setPhase(PHASE.DIALOGUE), 5500)
   }
 
   useEffect(() => {
-    if (phase === PHASE.FLASH) {
-      audio.play('flash');
-      return () => audio.stop('flash');
+    audio.stop('flash');
+    audio.stop('tvtime');
+
+    switch (phase) {
+      case PHASE.FLASH:
+        audio.play('flash');
+        break;
+      case PHASE.TV:
+        audio.play('tvtime');
+        break;
+      case PHASE.DIALOGUE:
+        audio.play('showtime');
+        break;
+      case PHASE.REVEAL:
+        audio.fadeTo('showtime', 0, 400);
+        audio.play("drumroll");
+        break;
+      case PHASE.PRODUCT:
+        audio.stop("piatti");
+        audio.play("halloffame");
+        break;
     }
-    if (phase === PHASE.TV) {
-      audio.play('tvtime');
-      return () => audio.stop('tvtime');
-    }
-    if (phase === PHASE.DIALOGUE) {
-      audio.play('showtime');
-      return () => audio.stop('showtime');
-    }
-    if (phase === PHASE.REVEAL) {
-      audio.stop('showtime');
-    }
-  }, [phase])
+  }, [phase]);
+
+
+  //Handler audio per componenti figli
+  const playDrumroll = () => {
+    audio.play("drumroll");
+  }
+
+  const playPiatto = () => {
+    audio.stop("drumroll");
+    audio.play("piatti");
+  }
+
+  const playScratch = () => {
+    audio.stop("halloffame");
+    audio.play("scratch");
+  }
+
+  const playSadTenna = () => {
+    audio.play("sadtenna");
+  }
+
   const nextDialogue = () => {
     if (phase === PHASE.DIALOGUE) {
       if (dialogIndex < dialogueA.length - 1) setDialogIndex(i => i + 1)
@@ -152,7 +182,7 @@ export default function App() {
       {/* REVEAL SEQUENCE */}
       <AnimatePresence>{phase === PHASE.REVEAL && (
         <motion.div key="r" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
-          <RevealSequence onDone={() => { setDialogIndex(0); setPhase(PHASE.PRODUCT) }} />
+          <RevealSequence onDone={() => { setDialogIndex(0); setPhase(PHASE.PRODUCT) }} playPiatto={playPiatto} playDrumroll={playDrumroll}/>
         </motion.div>
       )}</AnimatePresence>
 
