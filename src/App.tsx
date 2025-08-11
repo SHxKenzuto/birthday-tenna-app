@@ -23,8 +23,9 @@ export default function App() {
     showtime: { src: '/audio/showtime.m4a', volume: 0.25, loop: true },
     drumroll: { src: '/audio/drumroll.wav', volume: 0.25, loop: true },
     piatti: { src: '/audio/piatti.wav', volume: 0.25 },
-    halloffame: { src: '/audio/halloffame.mp3', volume: 0.25 , loop: true},
+    halloffame: { src: '/audio/halloffame.wav', volume: 0.25 , loop: true},
     scratch: { src: '/audio/scratch.wav', volume: 0.25},
+    sadtenna: { src: '/audio/sadtenna.mp3', volume: 0.25, loop: true},
 }), []); 
   const audio = useAudioManager(tracks);
 
@@ -104,9 +105,16 @@ export default function App() {
     }
   }, [phase]);
 
+  useEffect(() => {
+    if(phase === PHASE.PRODUCT){
+      if(dialogIndex === 8) playScratch();
+      else if(dialogIndex === 9) playSadTenna();
+    }
+  }, [dialogIndex])
 
   //Handler audio per componenti figli
   const playDrumroll = () => {
+    audio.stop("piatti");
     audio.play("drumroll");
   }
 
@@ -121,6 +129,7 @@ export default function App() {
   }
 
   const playSadTenna = () => {
+    audio.stop("scratch");
     audio.play("sadtenna");
   }
 
@@ -195,6 +204,7 @@ export default function App() {
           <div className="w-full h-full flex items-center justify-center">
             <div className="text-center" style={{ fontFamily: 'var(--tenna-font)' }}>
               <div className="text-lg">Il peluche di Tenna tornerà...nel 2026 ✦</div>
+              <div className="text-lg">Buon compleanno :)</div>
             </div>
           </div>
         </motion.div>
