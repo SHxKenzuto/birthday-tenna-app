@@ -15,9 +15,9 @@ export const RevealSequence: React.FC<{ onDone: () => void, playPiatto: () => vo
   const [disappear, setDisappear] = useState(false);
   const animDelay = useRef<number>(350); // ms dopo l'apertura del coperchio
   const lines = {
-    commentA: { text: "Wow, un amiibo di Monster Hunter!! Questo sì che sarebbe stato un gran bel premio.", avatar: "/images/spr_tenna_whisper_0.png" },
-    commentB: { text: "COOSA?? Lo stesso amiibo?? MIKE! Cosa hai combinato con i premi?!", avatar: "/images/spr_tenna_fallen_1.png" },
-    commentP: { text: "E ora… il tuo premio!", avatar: "/images/spr_tenna_pose_podium_1.png" },
+    commentA: { text: "Wow, un amiibo di Monster Hunter!! Questo sì che sarebbe stato un gran bel premio.", avatar: "./images/spr_tenna_whisper_0.png" },
+    commentB: { text: "COOSA?? Lo stesso amiibo?? MIKE! Cosa hai combinato con i premi?!", avatar: "./images/spr_tenna_fallen_1.png" },
+    commentP: { text: "E ora… il tuo premio!", avatar: "./images/spr_tenna_pose_podium_1.png" },
   } as const
 
 
@@ -77,7 +77,7 @@ export const RevealSequence: React.FC<{ onDone: () => void, playPiatto: () => vo
     step === 'commentA' ? lines.commentA.avatar :
       step === 'commentB' ? lines.commentB.avatar :
         step === 'commentP' ? lines.commentP.avatar :
-          '/images/spr_tenna_grasp_anim.gif';
+          './images/spr_tenna_grasp_anim.gif';
 
   const currentComment =
     (step === 'commentA' && lines.commentA) ||

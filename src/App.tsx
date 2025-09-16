@@ -17,15 +17,15 @@ export default function App() {
   const [dialogIndex, setDialogIndex] = useState(0)
 
   const tracks = useMemo(() => ({
-    tvtime: { src: '/audio/itstvtime.wav', volume: 0.25, loop: true },
-    anotherhim: { src: '/audio/another-him.mp3', volume: 0.25 },
-    flash: { src: '/audio/mus_create.wav', volume: 0.25 },
-    showtime: { src: '/audio/showtime.m4a', volume: 0.25, loop: true },
-    drumroll: { src: '/audio/drumroll.wav', volume: 0.25, loop: true },
-    piatti: { src: '/audio/piatti.wav', volume: 0.25 },
-    halloffame: { src: '/audio/halloffame.wav', volume: 0.25 , loop: true},
-    scratch: { src: '/audio/scratch.wav', volume: 0.25},
-    sadtenna: { src: '/audio/sadtenna.mp3', volume: 0.25, loop: true},
+    tvtime: { src: './audio/itstvtime.wav', volume: 0.25, loop: true },
+    anotherhim: { src: './audio/another-him.mp3', volume: 0.25 },
+    flash: { src: './audio/mus_create.wav', volume: 0.25 },
+    showtime: { src: './audio/showtime.m4a', volume: 0.25, loop: true },
+    drumroll: { src: './audio/drumroll.wav', volume: 0.25, loop: true },
+    piatti: { src: './audio/piatti.wav', volume: 0.25 },
+    halloffame: { src: './audio/halloffame.wav', volume: 0.25 , loop: true},
+    scratch: { src: './audio/scratch.wav', volume: 0.25},
+    sadtenna: { src: './audio/sadtenna.mp3', volume: 0.25, loop: true},
 }), []); 
   const audio = useAudioManager(tracks);
 
@@ -39,37 +39,37 @@ export default function App() {
   };
 
   const dialogueA = [
-    { text: 'Benvenute e benvenuti al Mr.(Ant)Tenna\'s Smartphone Time!!', gif: '/images/spr_tenna_bow.gif' },
-    { text: 'Ed oggi la star del nostro SHOW sarai proprio TU!!!', gif: '/images/spr_tenna_point_droop_0.png' },
-    { text: 'Il MERAVIGLIOSO Tabellone dei Misteri di Mr. Tenna oggi propone...', gif: '/images/spr_tenna_t_pose.gif' },
-    { text: 'Un gioco a premi!!', gif: '/images/spr_tenna_armsup_annoyed_0.png' },
-    { text: 'E visto che abbiamo la fantasia della RAI, ma senza i suoi soldi, il gioco di oggi sarà...', gif: '/images/spr_tenna_laugh.gif' },
-    { text: 'AFFARI TUOI (in un solo turno).', gif: '/images/spr_tenna_dance_cane.gif' },
-    { text: 'Ora scegli un pacco e scopriamo cosa hai vinto!', gif: '/images/spr_tenna_grasp_anim.gif' },
+    { text: 'Benvenute e benvenuti al Mr.(Ant)Tenna\'s Smartphone Time!!', gif: './images/spr_tenna_bow.gif' },
+    { text: 'Ed oggi la star del nostro SHOW sarai proprio TU!!!', gif: './images/spr_tenna_point_droop_0.png' },
+    { text: 'Il MERAVIGLIOSO Tabellone dei Misteri di Mr. Tenna oggi propone...', gif: './images/spr_tenna_t_pose.gif' },
+    { text: 'Un gioco a premi!!', gif: './images/spr_tenna_armsup_annoyed_0.png' },
+    { text: 'E visto che abbiamo la fantasia della RAI, ma senza i suoi soldi, il gioco di oggi sarà...', gif: './images/spr_tenna_laugh.gif' },
+    { text: 'AFFARI TUOI (in un solo turno).', gif: './images/spr_tenna_dance_cane.gif' },
+    { text: 'Ora scegli un pacco e scopriamo cosa hai vinto!', gif: './images/spr_tenna_grasp_anim.gif' },
   ]
 
   const dialogueB = [
-    { text: 'Hai fatto la tua scelta...', gif: '/images/spr_tenna_pose_podium_1.png' },
-    { text: 'Ma sarà stata quella giusta?', gif: '/images/spr_tenna_point_droop_0.png' },
-    { text: 'Scopriamo prima cosa c\'era negli altri pacchi...', gif: '/images/spr_tenna_evil_0.png' },
+    { text: 'Hai fatto la tua scelta...', gif: './images/spr_tenna_pose_podium_1.png' },
+    { text: 'Ma sarà stata quella giusta?', gif: './images/spr_tenna_point_droop_0.png' },
+    { text: 'Scopriamo prima cosa c\'era negli altri pacchi...', gif: './images/spr_tenna_evil_0.png' },
   ]
 
   const dialogueC = [
-    { text: 'Wow, che colpo di fortuna!', gif: '/images/spr_tenna_dance_cabbage.gif' },
-    { text: 'Osserva che meraviglia!', gif: '/images/spr_tenna_t_pose.gif' },
-    { text: 'La cura per i dettagli!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'Veramente degno del Tumblr Sexyman 2025.', gif: '/images/spr_tenna_dance_cane.gif' },
-    { text: 'E sarà tutto tuo a partire da...', gif: '/images/spr_tenna_dance_cane.gif' },
-    { text: 'OGGI!!!', gif: '/images/spr_tenna_t_pose.gif' },
-    { text: 'Cosa?', gif: '/images/spr_tenna_bulletin_0.png' },
-    { text: 'Cosa c\'è Mike?', gif: '/images/spr_tenna_sad_turned_a_0.png' },
-    { text: 'Come dici? Non prima del 2026?', gif: '/images/spr_tenna_sad_turned_a_0.png' },
-    { text: 'INACCETTABILE!!!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'MIKE DISTRUGGI LA BOARD!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'MIKE DISTRUGGI L\'APP!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'MIKE DISTRUGGI LA MIA CASA!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'MIKE DISTRUGGI I MIEI FIGLI!', gif: '/images/spr_tenna_grasp_anim.gif' },
-    { text: 'MIKEEEEEEEEEEEEEEEEE!!!', gif: '/images/spr_tenna_grasp_anim.gif' },
+    { text: 'Wow, che colpo di fortuna!', gif: './images/spr_tenna_dance_cabbage.gif' },
+    { text: 'Osserva che meraviglia!', gif: './images/spr_tenna_t_pose.gif' },
+    { text: 'La cura per i dettagli!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'Veramente degno del Tumblr Sexyman 2025.', gif: './images/spr_tenna_dance_cane.gif' },
+    { text: 'E sarà tutto tuo a partire da...', gif: './images/spr_tenna_dance_cane.gif' },
+    { text: 'OGGI!!!', gif: './images/spr_tenna_t_pose.gif' },
+    { text: 'Cosa?', gif: './images/spr_tenna_bulletin_0.png' },
+    { text: 'Cosa c\'è Mike?', gif: './images/spr_tenna_sad_turned_a_0.png' },
+    { text: 'Come dici? Non prima del 2026?', gif: './images/spr_tenna_sad_turned_a_0.png' },
+    { text: 'INACCETTABILE!!!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'MIKE DISTRUGGI LA BOARD!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'MIKE DISTRUGGI L\'APP!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'MIKE DISTRUGGI LA MIA CASA!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'MIKE DISTRUGGI I MIEI FIGLI!', gif: './images/spr_tenna_grasp_anim.gif' },
+    { text: 'MIKEEEEEEEEEEEEEEEEE!!!', gif: './images/spr_tenna_grasp_anim.gif' },
   ]
 
   const startShow = async () => {
@@ -174,7 +174,7 @@ export default function App() {
         <motion.div key="c" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,#0e0e0e,black_60%)]" />
           <div className="absolute top-6 w-full text-center text-xs opacity-80" style={{ fontFamily: 'var(--tenna-font)' }}>Scegli un pacco</div>
-          <TennaOverlay gifUrl={'/images/spr_tenna_grasp_anim.gif'} placement="right" />
+          <TennaOverlay gifUrl={'./images/spr_tenna_grasp_anim.gif'} placement="right" />
           <GiftCarousel onChoose={() => { setDialogIndex(0); setPhase(PHASE.DIALOGUE_B) }} />
         </motion.div>
       )}</AnimatePresence>

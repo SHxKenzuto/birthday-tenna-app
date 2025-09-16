@@ -4,11 +4,11 @@ import { DialogueBox } from '@components/DialogueBox'
 import { TennaOverlay } from '@components/TennaOverlay'
 
 const IMGS = [
-  '/images/deltarune-487-2.png',
-  '/images/product_DR_tenna_plush_photo6_584595f4-6959-4c26-85a3-e2b8292a4379.webp',
-  '/images/product_DR_tenna_plush_photo3.webp',
-  '/images/product_DR_tenna_plush_photo2.webp',
-  '/images/product_DR_tenna_plush_staged2_5c3e7dd9-fc0a-4400-9859-0d49f68c0ffc.webp',
+  './images/deltarune-487-2.png',
+  './images/product_DR_tenna_plush_photo6_584595f4-6959-4c26-85a3-e2b8292a4379.webp',
+  './images/product_DR_tenna_plush_photo3.webp',
+  './images/product_DR_tenna_plush_photo2.webp',
+  './images/product_DR_tenna_plush_staged2_5c3e7dd9-fc0a-4400-9859-0d49f68c0ffc.webp',
 ]
 
 export const ProductSplash: React.FC<{

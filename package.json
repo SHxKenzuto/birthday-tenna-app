@@ -3,10 +3,12 @@
   "private": true,
   "version": "0.4.0",
   "type": "module",
+  "homepage": "https://shxkenzuto.github.io/birthday-tenna-app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
@@ -19,6 +21,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.19",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
